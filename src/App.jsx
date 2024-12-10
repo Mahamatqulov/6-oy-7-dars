@@ -17,6 +17,7 @@ import {
 import { loader as HomeLoader } from "./pages/Home";
 import { loader as SingleProductLoader } from "./pages/SingleProduct";
 import { ProtectedRoutes } from "./components";
+
 function App() {
   const user = true;
   const router = createBrowserRouter([

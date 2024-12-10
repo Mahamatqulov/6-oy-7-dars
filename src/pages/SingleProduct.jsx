@@ -11,9 +11,9 @@ function SingleProduct() {
   const { product } = useLoaderData();
   console.log(product);
   return (
-    <div className="card lg:card-side bg-base-100 shadow-xl ">
+    <div className="card md:card-side bg-base-100 shadow-xl ">
       <figure className="w-[1200px]">
-        <img className=" " src={product.thumbnail} alt="Album" />
+        <img className="" src={product.thumbnail} alt="Album" />
       </figure>
       <div className="card-body">
         <h2 className="card-title text-3xl">{product.title}</h2>
@@ -48,12 +48,12 @@ function SingleProduct() {
         </h3>
 
         <div className="card-actions justify-end">
-          <button
+          {/* <button
             onClick={(e) => buyProduct(e, prod)}
             className="btn btn-primary btn-sm md:btn-md"
           >
             Buy Now
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

@@ -5,17 +5,17 @@ import { GlobalContext } from "../context/globalContext";
 import { toast } from "react-toastify";
 
 function ProductsContainer() {
-  const { dispatch, selectedProduct } = useContext(GlobalContext);
+  const { addProduct, selectedProducts } = useContext(GlobalContext);
   const { products } = useLoaderData();
   const buyProduct = (e, prod) => {
     e.preventDefault();
-    const product = selectedProduct.find((product) => prod.id == product.id);
+    const product = selectedProducts.find((product) => prod.id == product.id);
     if (product) {
       toast.warn("Bu maxsulot savatda bor !");
       return;
     }
 
-    dispatch({ type: "ADD_PRODUCT", payload: prod });
+    addProduct({ ...prod, amount: 1 });
   };
 
   return (
@@ -44,12 +44,19 @@ function ProductsContainer() {
                 }
                 {prod.rating}
               </h2>
-              <p>${prod.price}</p>
+              <div className="flex ">
+                <p className="text-xl font-medium  text-red-500  line-through">
+                  ${prod.price}
+                </p>
+                <p className="text-xl font-medium  text-green-500 flex justify-end">
+                  ${prod.discountPercentage}
+                </p>
+              </div>
 
               <div className="card-actions justify-end">
                 <button
                   onClick={(e) => buyProduct(e, prod)}
-                  className="btn btn-primary btn-sm md:btn-md"
+                  className="btn btn-primary btn-block btn-sm md:btn-md"
                 >
                   Buy Now
                 </button>

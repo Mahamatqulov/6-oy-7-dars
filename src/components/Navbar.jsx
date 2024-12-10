@@ -5,7 +5,9 @@ import { useContext } from "react";
 import { GlobalContext } from "../context/globalContext";
 
 function Navbar() {
-  const { color, selectedProduct } = useContext(GlobalContext);
+  const { color, selectedProducts, totalAmount, totalPrice } =
+    useContext(GlobalContext);
+
   return (
     <header className="bg-base-200 mb-10" style={{ backgroundColor: color }}>
       <div className="align-elements navbar">
@@ -39,7 +41,7 @@ function Navbar() {
         </div>
         <div className="navbar-end">
           <div className="flex-none flex items-center gap-2">
-            <div className="dropdown dropdown-end">
+            <button className="dropdown dropdown-end">
               <div
                 tabIndex={0}
                 role="button"
@@ -61,7 +63,7 @@ function Navbar() {
                     />
                   </svg>
                   <span className="badge badge-sm indicator-item">
-                    {selectedProduct.length}
+                    {totalAmount}
                   </span>
                 </div>
               </div>
@@ -70,16 +72,16 @@ function Navbar() {
                 className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow"
               >
                 <div className="card-body">
-                  <span className="text-lg font-bold">8 Items</span>
-                  <span className="text-info">Subtotal: $999</span>
+                  <span className="text-lg font-bold">{totalAmount} Item</span>
+                  <span className="text-info">Subtotal:{totalPrice}</span>
                   <div className="card-actions">
-                    <button className="btn btn-primary btn-block">
+                    <Link to="/card" className="btn btn-primary btn-block">
                       View cart
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
-            </div>
+            </button>
             <div className="dropdown dropdown-end">
               <div
                 tabIndex={0}
