@@ -3,8 +3,10 @@ import NavbarLink from "./NavbarLink";
 
 import { useContext } from "react";
 import { GlobalContext } from "../context/globalContext";
+import { useSignout } from "../hooks/useSignout";
 
 function Navbar() {
+  const { userSignout } = useSignout();
   const { color, selectedProducts, totalAmount, totalPrice } =
     useContext(GlobalContext);
 
@@ -109,7 +111,7 @@ function Navbar() {
                   <a>Settings</a>
                 </li>
                 <li>
-                  <a>Logout</a>
+                  <span onClick={userSignout}>Logout</span>
                 </li>
               </ul>
             </div>

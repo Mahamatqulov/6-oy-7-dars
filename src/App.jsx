@@ -16,10 +16,11 @@ import {
 
 import { loader as HomeLoader } from "./pages/Home";
 import { loader as SingleProductLoader } from "./pages/SingleProduct";
-import { ProtectedRoutes } from "./components";
+import ProtectedRoutes from "./components/ProtectedRoutes";
+import { useGlobalContext } from "./hooks/userGlobalContext";
 
 function App() {
-  const user = true;
+  const { user, authReady } = useGlobalContext();
   const router = createBrowserRouter([
     {
       path: "/",
